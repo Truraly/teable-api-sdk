@@ -84,7 +84,6 @@ export type TeableClient = {
     update: (options: RecordUpdateOptions) => Promise<TeableResponse<RecordUpdateResponse>>;
     delete: (options: RecordDeleteOptions) => Promise<TeableResponse<RecordDeleteResponse>>;
     uploadAttachment: (options: RecordUploadAttachmentOptions) => Promise<TeableResponse<RecordUploadAttachmentResponse>>;
-    list: (options: Omit<RecordGetOptions, 'viewId'>) => Promise<TeableResponse<RecordGetResponse>>;
   };
   validateConfig: () => boolean;
 };
