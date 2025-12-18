@@ -344,10 +344,5 @@ export default function getRecordApis(client: AxiosInstance) {
         };
       }
     },
-
-    // 别名方法，保持向后兼容
-    list: function(options: Omit<RecordGetOptions, 'viewId'>): Promise<TeableResponse<RecordGetResponse>> {
-      return this.get(options);
-    }
   };
 }
