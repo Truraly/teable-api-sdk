@@ -1,0 +1,24 @@
+name: Publish to NPM
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: [deploy,uopve]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build package
+        run: npm run build
+
+      - name: Publish to NPM
+        run: |
+          npm set registry.npmjs.org/:_authToken=${{ secrets.NPM_SEC }}
+          npm publish --access public

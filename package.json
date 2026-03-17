@@ -1,5 +1,5 @@
 {
-  "name": "@teble/api-sdk",
+  "name": "teable-api-sdk",
   "version": "1.0.0",
   "description": "Teable API SDK - A TypeScript client for Teable API",
   "main": "dist/index.js",
@@ -27,16 +27,16 @@
     "database",
     "spreadsheet"
   ],
-  "author": "Teable Team",
+  "author": "Truraly",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/teable-api-sdk.git"
+    "url": "https://github.com/Truraly/teable-api-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/your-org/teable-api-sdk/issues"
+    "url": "https://github.com/Truraly/teable-api-sdk/issues"
   },
-  "homepage": "https://github.com/your-org/teable-api-sdk#readme",
+  "homepage": "https://github.com/Truraly/teable-api-sdk#readme",
   "peerDependencies": {
     "axios": ">=1.0.0"
   },
@@ -57,5 +57,9 @@
   },
   "dependencies": {
     "zod": "^3.22.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
