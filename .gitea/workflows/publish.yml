@@ -15,19 +15,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - run: npm install
-      - run: npm run build
 
-      # - name: Setup pnpm
-      #   run: |
-      #     corepack enable
-      #     corepack prepare pnpm@8 --activate
+      - name: Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@8 --activate
 
-      # - run: pnpm install
-      # - run: pnpm build
-
-      # - name: Build package
-      #   run: npm run build
+      - run: pnpm build
 
       - name: Publish to NPM
         run: |
