@@ -5,28 +5,31 @@ on:
     branches:
       - "main"
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   publish:
-    runs-on: [deploy,uopve]
+    runs-on: [deploy, uopve]
     container:
       image: node:20-slim
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: show env
-        run: ls
+      - run: npm install
+      - run: npm run build
 
-      - name: Install dependencies
-        run: |
-          npm i -g pnpm
-          pnpm install
+      # - name: Setup pnpm
+      #   run: |
+      #     corepack enable
+      #     corepack prepare pnpm@8 --activate
 
-      - name: Build package
-        run: npm run build
+      # - run: pnpm install
+      # - run: pnpm build
+
+      # - name: Build package
+      #   run: npm run build
 
       - name: Publish to NPM
         run: |
-          npm set registry.npmjs.org/:_authToken=${{ secrets.NPM_SEC }}
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_SEC }}
           npm publish --access public
