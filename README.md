@@ -15,17 +15,17 @@
 ## 安装
 
 ```bash
-npm install @teble/api-sdk
+npm install teable-api-sdk
 # 或者
-yarn add @teble/api-sdk
+yarn add teable-api-sdk
 # 或者
-pnpm add @teble/api-sdk
+pnpm add teable-api-sdk
 ```
 
 ## 快速开始
 
 ```typescript
-import { createTeableClient } from '@teble/api-sdk';
+import { createTeableClient } from 'teable-api-sdk';
 
 // 创建客户端实例
 const client = createTeableClient({
@@ -51,7 +51,7 @@ if (result.success) {
 ### 创建客户端
 
 ```typescript
-import { createTeableClient } from '@teble/api-sdk';
+import { createTeableClient } from 'teable-api-sdk';
 
 const client = createTeableClient({
   apiKey: string;        // API 密钥（必需）
@@ -219,7 +219,7 @@ if (client.validateConfig()) {
 在浏览器中使用时，可以直接引入 UMD 版本：
 
 ```html
-<script src="https://unpkg.com/@teble/api-sdk/dist/index.umd.js"></script>
+<script src="https://unpkg.com/teable-api-sdk/dist/index.umd.js"></script>
 <script>
   const { createTeableClient } = TeableSDK;
 
