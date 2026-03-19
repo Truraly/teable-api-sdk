@@ -15,12 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: show env
+        uses: ls
 
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          npm i -g pnpm
+          pnpm install
 
       - name: Build package
-        run: pnpm run build
+        run: npm run build
 
       - name: Publish to NPM
         run: |
