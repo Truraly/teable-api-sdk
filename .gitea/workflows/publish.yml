@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: show env
-        uses: ls
+        run: ls
 
       - name: Install dependencies
         run: |
