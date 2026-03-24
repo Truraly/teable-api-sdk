@@ -1,6 +1,6 @@
 {
   "name": "teable-api-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Teable API SDK - A TypeScript client for Teable API",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

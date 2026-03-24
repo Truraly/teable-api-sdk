@@ -37,7 +37,7 @@ export const RecordGetSchema = z.object({
   orderBy: z
     .array(
       z.object({
-        field: z.string(),
+        fieldId: z.string(),
         order: z.enum(["asc", "desc"]),
       })
     )

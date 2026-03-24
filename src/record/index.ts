@@ -22,14 +22,14 @@ import {
   RecordGetByIdSchema,
   RecordUpdateSchema,
   RecordDeleteSchema,
-  RecordUploadAttachmentSchema
+  RecordUploadAttachmentSchema,
 } from "./schema";
 import z from "zod";
 
 export default function getRecordApis(client: AxiosInstance) {
   return {
     async create(
-      options: RecordCreateOptions
+      options: RecordCreateOptions,
     ): Promise<TeableResponse<RecordCreateResponse>> {
       try {
         // 验证请求数据
@@ -59,7 +59,7 @@ export default function getRecordApis(client: AxiosInstance) {
         // 发送 POST 请求
         const response = await client.post<RecordCreateResponse>(
           `/api/table/${validatedData.tableId}/record`,
-          requestBody
+          requestBody,
         );
 
         return {
@@ -87,7 +87,7 @@ export default function getRecordApis(client: AxiosInstance) {
     },
 
     async get(
-      options: RecordGetOptions
+      options: RecordGetOptions,
     ): Promise<TeableResponse<RecordGetResponse>> {
       try {
         const validatedData = RecordGetSchema.parse(options);
@@ -115,7 +115,7 @@ export default function getRecordApis(client: AxiosInstance) {
           params.projection = JSON.stringify(queryParams.projection);
         }
         if (queryParams.orderBy && queryParams.orderBy.length > 0) {
-          params.orderBy = encodeURIComponent(JSON.stringify(queryParams.orderBy));
+          params.orderBy = JSON.stringify(queryParams.orderBy);
         }
         if (queryParams.filter) {
           params.filter = JSON.stringify(queryParams.filter);
@@ -123,11 +123,11 @@ export default function getRecordApis(client: AxiosInstance) {
         if (queryParams.search && queryParams.search.length > 0) {
           params.search = JSON.stringify(queryParams.search);
         }
-        
+
         // 发送 GET 请求
         const response = await client.get<RecordGetResponse>(
           `/api/table/${tableId}/record`,
-          { params }
+          { params },
         );
 
         return {
@@ -155,7 +155,7 @@ export default function getRecordApis(client: AxiosInstance) {
     },
 
     async getById(
-      options: RecordGetByIdOptions
+      options: RecordGetByIdOptions,
     ): Promise<TeableResponse<RecordGetByIdResponse>> {
       try {
         const validatedData = RecordGetByIdSchema.parse(options);
@@ -177,7 +177,7 @@ export default function getRecordApis(client: AxiosInstance) {
         // 发送 GET 请求获取单个记录
         const response = await client.get<RecordGetByIdResponse>(
           `/api/table/${tableId}/record/${recordId}`,
-          { params }
+          { params },
         );
 
         return {
@@ -205,7 +205,7 @@ export default function getRecordApis(client: AxiosInstance) {
     },
 
     async update(
-      options: RecordUpdateOptions
+      options: RecordUpdateOptions,
     ): Promise<TeableResponse<RecordUpdateResponse>> {
       try {
         const validatedData = RecordUpdateSchema.parse(options);
@@ -235,7 +235,7 @@ export default function getRecordApis(client: AxiosInstance) {
         // 发送 PATCH 请求更新记录
         const response = await client.patch<RecordUpdateResponse>(
           `/api/table/${tableId}/record/${recordId}`,
-          requestBody
+          requestBody,
         );
 
         return {
@@ -263,7 +263,7 @@ export default function getRecordApis(client: AxiosInstance) {
     },
 
     async delete(
-      options: RecordDeleteOptions
+      options: RecordDeleteOptions,
     ): Promise<TeableResponse<RecordDeleteResponse>> {
       try {
         const validatedData = RecordDeleteSchema.parse(options);
@@ -297,7 +297,7 @@ export default function getRecordApis(client: AxiosInstance) {
     },
 
     async uploadAttachment(
-      options: RecordUploadAttachmentOptions
+      options: RecordUploadAttachmentOptions,
     ): Promise<TeableResponse<RecordUploadAttachmentResponse>> {
       try {
         const validatedData = RecordUploadAttachmentSchema.parse(options);
@@ -305,9 +305,9 @@ export default function getRecordApis(client: AxiosInstance) {
 
         // 构建 FormData
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append("file", file);
         if (fileUrl) {
-          formData.append('fileUrl', fileUrl);
+          formData.append("fileUrl", fileUrl);
         }
 
         // 发送 POST 请求上传附件
@@ -316,9 +316,9 @@ export default function getRecordApis(client: AxiosInstance) {
           formData,
           {
             headers: {
-              'Content-Type': 'multipart/form-data',
+              "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
 
         return {
