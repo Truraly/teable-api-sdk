@@ -19,7 +19,7 @@ jest.mock('axios', () => ({
 jest.setTimeout(10000);
 
 // 全局测试配置
-global.console = {
+globalThis.console = {
   ...console,
   // 在测试中禁用某些日志输出
   log: jest.fn(),
