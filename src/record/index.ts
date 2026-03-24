@@ -115,7 +115,7 @@ export default function getRecordApis(client: AxiosInstance) {
           params.projection = JSON.stringify(queryParams.projection);
         }
         if (queryParams.orderBy && queryParams.orderBy.length > 0) {
-          params.orderBy = JSON.stringify(queryParams.orderBy);
+          params.orderBy = encodeURIComponent(JSON.stringify(queryParams.orderBy));
         }
         if (queryParams.filter) {
           params.filter = JSON.stringify(queryParams.filter);
@@ -123,7 +123,7 @@ export default function getRecordApis(client: AxiosInstance) {
         if (queryParams.search && queryParams.search.length > 0) {
           params.search = JSON.stringify(queryParams.search);
         }
-
+        
         // 发送 GET 请求
         const response = await client.get<RecordGetResponse>(
           `/api/table/${tableId}/record`,

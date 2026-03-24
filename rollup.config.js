@@ -12,6 +12,7 @@ export default defineConfig([
       file: 'dist/index.js',
       format: 'cjs',
       sourcemap: true,
+      exports: 'named',
     },
     plugins: [
       resolve(),
@@ -52,6 +53,7 @@ export default defineConfig([
       format: 'umd',
       name: 'TeableSDK',
       sourcemap: true,
+      exports: 'named',
       globals: {
         axios: 'axios',
         zod: 'zod',
